@@ -24,6 +24,8 @@ A sintaxe segue a notação infixa padrão. A semântica é a avaliação usual 
 *   `(2 + 3) * 4`
 *   `20 / (5 - 3)`
 
+
+
 ## Estrutura do Projeto
 
 ```
@@ -127,3 +129,26 @@ Os testes unitários verificam o comportamento esperado do lexer e do parser de 
     ```
 
     Após a execução, você verá um resumo indicando quantos testes passaram (`OK`) ou falharam (`FAILED`).
+
+## Bugs/Limitações/Problemas Conhecidos
+
+Este projeto é uma implementação inicial de um compilador, focada em demonstrar as fases básicas para **expressões aritméticas**. Suas principais limitações e pontos para melhoria futura incluem:
+
+*   **Escopo da Linguagem:** Atualmente, o compilador suporta apenas operações aritméticas com números inteiros, adição, subtração, multiplicação, divisão e parênteses. Não há suporte para:
+    *   Variáveis
+    *   Atribuições
+    *   Estruturas de controle de fluxo (condicionais como `if/else`, loops como `while/for`)
+    *   Definição e chamada de funções
+    *   Tipos de dados mais complexos (strings, booleanos, ponto flutuante)
+*   **Análise Semântica:** O compilador não possui uma fase de análise semântica robusta para verificar erros de tipo, variáveis não declaradas ou outras inconsistências lógicas. Erros desse tipo passariam despercebidos até a fase de geração de código ou execução.
+*   **Mensagens de Erro dos Testes do Parser:** Conforme observado nos testes unitários, os testes `test_missing_rparen_error` e `test_unexpected_token_error` no `tests/test_parser.py` estão atualmente comentados. Isso se deve a um problema na correspondência exata da mensagem de erro da exceção com a expressão regular do teste.
+*   **Otimizações:** O código gerado para a máquina de pilha é uma tradução direta da AST e não inclui otimizações.
+*   **Tratamento de Erros de Runtime:** Não há um interpretador para a máquina de pilha, então o código gerado não é executado, e erros de runtime (como divisão por zero) não são detectados.
+
+**Melhorias Futuras Sugeridas:**
+
+*   Expandir a linguagem para incluir variáveis, atribuições e estruturas de controle.
+*   Implementar uma fase de análise semântica.
+*   Desenvolver um interpretador para a máquina de pilha, permitindo a execução do código gerado.
+*   Aprimorar as mensagens de erro do lexer e parser para incluir informações precisas de linha e coluna no texto original.
+*   Resolver as expressões regulares nos testes do parser que estão comentadas.
