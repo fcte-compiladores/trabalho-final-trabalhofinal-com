@@ -49,7 +49,7 @@ exemplos/            # Arquivos de exemplo de expressões
 └── complexo.expr
 README.md            # Documentação do projeto
 .gitignore           # Arquivos ignorados pelo Git
-pyproject.toml       # (Opcional) Gerenciamento de pacotes
+pyproject.toml       # Gerenciamento de pacotes
 venv/                # Ambiente virtual Python
 ```
 
@@ -145,10 +145,4 @@ Este projeto é uma implementação inicial de um compilador, focada em demonstr
 *   **Otimizações:** O código gerado para a máquina de pilha é uma tradução direta da AST e não inclui otimizações.
 *   **Tratamento de Erros de Runtime:** Não há um interpretador para a máquina de pilha, então o código gerado não é executado, e erros de runtime (como divisão por zero) não são detectados.
 
-**Melhorias Futuras Sugeridas:**
 
-*   Expandir a linguagem para incluir variáveis, atribuições e estruturas de controle.
-*   Implementar uma fase de análise semântica.
-*   Desenvolver um interpretador para a máquina de pilha, permitindo a execução do código gerado.
-*   Aprimorar as mensagens de erro do lexer e parser para incluir informações precisas de linha e coluna no texto original.
-*   Resolver as expressões regulares nos testes do parser que estão comentadas.
